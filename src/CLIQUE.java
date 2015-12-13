@@ -5,7 +5,7 @@ import java.util.Set;
 public class CLIQUE {
 	Graph grafo;
 	int K = 4;
-	ArrayList<conjunto> conjuntos = new ArrayList();
+	ArrayList<conjunto> conjuntos = new ArrayList<conjunto>();
 
 	public CLIQUE() {
 		System.out.println("---CLIQUE---");
