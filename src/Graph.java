@@ -39,7 +39,19 @@ public class Graph {
 			e.printStackTrace();
 		}
 	}
-
+	public Graph getInverso(){
+		Graph invertido = new Graph(this.N);
+		for (int i = 0; i < invertido.N; i++) {
+			for (int j = 0; j < invertido.N; j++) {
+				if(i!=j){
+					invertido.setEdge(i, j, 1-this.getEdge(i, j));
+				}else{
+					invertido.setEdge(i, j, 0);
+				}
+			}
+		}
+		return invertido;
+	}
 	public void setEdge(int i, int j, int value) {
 		grafo[i][j] = value;
 	}

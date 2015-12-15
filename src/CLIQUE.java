@@ -7,19 +7,10 @@ public class CLIQUE {
 	int K = 4;
 	ArrayList<conjunto> conjuntos = new ArrayList<conjunto>();
 
-	public CLIQUE() {
+	public CLIQUE(Graph grafo) {
 		System.out.println("---CLIQUE---");
-		Graph aux = new Graph("grafo1");
-		grafo = new Graph(aux.N);
-		for (int i = 0; i < grafo.N; i++) {
-			for (int j = 0; j < grafo.N; j++) {
-				if (i != j) {
-					grafo.setEdge(i, j, 1 - aux.getEdge(i, j));
-				} else {
-					grafo.setEdge(i, j, 0);
-				}
-			}
-		}
+		this.grafo = grafo;
+		grafo.show();
 	}
 
 	public void getClique() {
@@ -47,7 +38,8 @@ public class CLIQUE {
 			conjuntos.add(auxiliar);
 
 		}
-		this.showConjuntos();
+		
+		
 		conjunto resultado = new conjunto(K);
 		for (int k = 0; k < conjuntos.size(); k++) {
 			int[] aux = conjuntos.get(k).getConjunto();

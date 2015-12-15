@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -8,10 +8,10 @@ public class VC {
 	Graph grafo;
 	ArrayList<conjunto> conjuntos = new ArrayList();
 
-	public VC(int k) {
+	public VC(int k, Graph grafo) {
 		System.out.println("---Vertex Cover---");
 		this.K = k;
-		grafo = new Graph("grafo1");
+		this.grafo = grafo;
 	}
 
 	public boolean vertexCover() {
@@ -42,7 +42,7 @@ public class VC {
 			
 			
 		}
-		this.showConjuntos();
+		
 		for (int k = 0; k < conjuntos.size(); k++) {
 			int cont = 0;
 			int[] conjuntoAuxiliar = conjuntos.get(k).getConjunto();
@@ -52,10 +52,6 @@ public class VC {
 				for (int j = 0; j < grafo.N; j++) {
 					if (grafo.getVisited(conjuntoAuxiliar[i], j) == false) {
 						cont = cont + grafo.getEdge(conjuntoAuxiliar[i], j);
-						// System.out.println("Valor(" + conjuntaso[i] + "," + j
-						// + "}: " + grafo.getEdge(conjuntaso[i], j));
-						// System.out.println("Contador(" + conjuntaso[i] + ","
-						// + j + "}: " + cont);
 					}
 				}
 				if (cont == 5) {
