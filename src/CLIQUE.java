@@ -4,13 +4,13 @@ import java.util.Set;
 
 public class CLIQUE {
 	Graph grafo;
-	int K = 4;
+	int K;
 	ArrayList<conjunto> conjuntos = new ArrayList<conjunto>();
 
-	public CLIQUE(Graph grafo) {
+	public CLIQUE(Graph grafo, int k) {
+		this.K = k;
 		System.out.println("---CLIQUE---");
 		this.grafo = grafo;
-		grafo.show();
 	}
 
 	public void getClique() {
@@ -32,18 +32,15 @@ public class CLIQUE {
 				aux[j] = Character.getNumericValue(conjunt.charAt(j));
 
 			}
-			conjunto auxiliar = new conjunto(2);
+			conjunto auxiliar = new conjunto(this.K);
 			auxiliar.setConjunto(aux);
-			;
 			conjuntos.add(auxiliar);
 
 		}
-		
-		
-		conjunto resultado = new conjunto(K);
-		for (int k = 0; k < conjuntos.size(); k++) {
-			int[] aux = conjuntos.get(k).getConjunto();
 
+		conjunto resultado = new conjunto(this.K);
+		for (int z = 0; z < conjuntos.size(); z++) {
+			int[] aux = conjuntos.get(z).getConjunto();
 			boolean valido = true;
 			for (int i = 0; i < aux.length; i++) {
 				for (int j = i + 1; j < aux.length; j++) {
@@ -54,13 +51,19 @@ public class CLIQUE {
 				}
 			}
 			if (valido) {
-				resultado = conjuntos.get(k);
+				resultado = conjuntos.get(z);
 			}
 		}
+		if (resultado.SIZE == this.K) {
+			conjuntos.clear();
+			conjuntos.add(resultado);
+			System.out.print("Conjunto CLIQUE: ");
+			System.out.println(conjuntos);
+		} else {
+			System.out.println("Clique no encntrado con ese tamaño");
+		}
 		conjuntos.clear();
-		conjuntos.add(resultado);
-		System.out.print("Conjunto CLIQUE: ");
-		System.out.println(conjuntos);
+
 	}
 
 	public void showConjuntos() {

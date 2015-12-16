@@ -6,6 +6,7 @@ public class conjunto {
 
 	public conjunto(int size) {
 		conjunto = new int[size];
+		this.SIZE = size;
 	}
 
 	public void setConjunto(int conjunto[]) {
@@ -13,6 +14,9 @@ public class conjunto {
 	}
 	public int[] getConjunto(){
 		return conjunto;
+	}
+	public int getSize(){
+		return this.SIZE;
 	}
 	public String toString() {
 		String salida = "{";
