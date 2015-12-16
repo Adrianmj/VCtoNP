@@ -39,7 +39,8 @@ public class CLIQUE {
 		}
 
 		conjunto resultado = new conjunto(this.K);
-		for (int z = 0; z < conjuntos.size(); z++) {
+		//comprobamos si hay algun conjnto vlaido
+		outer:for (int z = 0; z < conjuntos.size(); z++) {
 			int[] aux = conjuntos.get(z).getConjunto();
 			boolean valido = true;
 			for (int i = 0; i < aux.length; i++) {
@@ -52,6 +53,7 @@ public class CLIQUE {
 			}
 			if (valido) {
 				resultado = conjuntos.get(z);
+				break outer;
 			}
 		}
 		if (resultado.SIZE == this.K) {
